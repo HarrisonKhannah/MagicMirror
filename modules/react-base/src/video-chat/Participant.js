@@ -5,6 +5,10 @@ const Participant = ({ participant }) => {
 	const [audioTracks, setAudioTracks] = React.useState([]);
 	const videoRef = React.useRef();
 	const audioRef = React.useRef();
+	const trackpubsToTracks = (trackMap) =>
+		Array.from(trackMap.values())
+			.map((publication) => publication.track)
+			.filter((track) => track !== null);
 	React.useEffect(() => {
 		const trackSubscribed = (track) => {
 			if (track.kind === "video") {
@@ -44,11 +48,11 @@ const Participant = ({ participant }) => {
 		}
 	}, [videoTracks]);
 	React.useEffect(() => {
-		const audioTracks = audioTrackss[0];
-		if (audioTracks) {
-			audioTracks.attach(audioRef.current);
+		const audioTrack = audioTracks[0];
+		if (audioTrack) {
+			audioTrack.attach(videoRef.current);
 			return () => {
-				audioTracks.detach();
+				audioTrack.detach();
 			};
 		}
 	}, [audioTracks]);
