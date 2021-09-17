@@ -5,7 +5,7 @@ import Participant from "./Participant";
 const Room = ({ roomName, token, handleLogout }) => {
 	const [room, setRoom] = React.useState(null);
 	const [participants, setParticipants] = React.useState([]);
-	const remoteParticipants = participants.map((participant) => <p key={participant.sid}>{participant.identity}</p>);
+	const remoteParticipants = participants.map((participant) => <Participant key={participant.sid} participant={participant} />);
 	React.useEffect(() => {
 		const participantConnected = (participant) => {
 			setParticipants((prevParticipants) => [...prevParticipants, participant]);
