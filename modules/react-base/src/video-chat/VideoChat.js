@@ -16,7 +16,7 @@ const VideoChat = () => {
 	const handleSubmit = React.useCallback(
 		async (event) => {
 			event.preventDefault();
-			const data = await fetch("http://192.168.1.103:3001/video/token", {
+			const data = await fetch("http://localhost:3001/video/token", {
 				method: "POST",
 				body: JSON.stringify({
 					identity: username,

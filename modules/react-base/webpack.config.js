@@ -10,7 +10,6 @@ module.exports = {
 		path: path.resolve(__dirname, process.env.NODE_ENV == "production" ? "" : "dist")
 	},
 	devServer: {
-		host: "192.168.1.103",
 		hot: true,
 		port: 3000,
 		writeToDisk: true,
