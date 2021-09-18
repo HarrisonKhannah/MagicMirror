@@ -47,7 +47,14 @@ module.exports = {
 					}
 				}
 			},
-			{ test: /\.(css|less)$/, use: ["style-loader", "css-loader"] }
+			{ test: /\.(css|less)$/, use: ["style-loader", "css-loader"] },
+			{
+				test: /\.(ts|tsx)?$/,
+				use: {
+					loader: "awesome-typescript-loader"
+				},
+				exclude: /node_modules/
+			}
 		]
 	},
 	plugins: [

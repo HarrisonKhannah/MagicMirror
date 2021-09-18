@@ -1,6 +1,6 @@
 {
 	"api": {
-		"users": {
+		"calander": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
@@ -9,7 +9,7 @@
 						"authenticationType": "API_KEY",
 						"apiKeyConfig": {
 							"apiKeyExpirationDays": 365,
-							"description": "test"
+							"description": "calKey"
 						}
 					},
 					"additionalAuthenticationProviders": []
