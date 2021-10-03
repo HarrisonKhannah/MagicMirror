@@ -1,5 +1,60 @@
 export const schema = {
 	models: {
+		User: {
+			name: "User",
+			fields: {
+				id: {
+					name: "id",
+					isArray: false,
+					type: "ID",
+					isRequired: true,
+					attributes: []
+				},
+				uuid: {
+					name: "uuid",
+					isArray: false,
+					type: "String",
+					isRequired: true,
+					attributes: []
+				},
+				name: {
+					name: "name",
+					isArray: false,
+					type: "String",
+					isRequired: true,
+					attributes: []
+				},
+				happiness: {
+					name: "happiness",
+					isArray: false,
+					type: "Int",
+					isRequired: true,
+					attributes: []
+				},
+				calander: {
+					name: "calander",
+					isArray: true,
+					type: {
+						model: "Calander"
+					},
+					isRequired: true,
+					attributes: [],
+					isArrayNullable: true,
+					association: {
+						connectionType: "HAS_MANY",
+						associatedWith: "userID"
+					}
+				}
+			},
+			syncable: true,
+			pluralName: "Users",
+			attributes: [
+				{
+					type: "model",
+					properties: {}
+				}
+			]
+		},
 		Calander: {
 			name: "Calander",
 			fields: {
@@ -30,6 +85,13 @@ export const schema = {
 						connectionType: "HAS_MANY",
 						associatedWith: "calanderID"
 					}
+				},
+				userID: {
+					name: "userID",
+					isArray: false,
+					type: "ID",
+					isRequired: false,
+					attributes: []
 				}
 			},
 			syncable: true,
@@ -38,6 +100,13 @@ export const schema = {
 				{
 					type: "model",
 					properties: {}
+				},
+				{
+					type: "key",
+					properties: {
+						name: "byUser",
+						fields: ["userID"]
+					}
 				}
 			]
 		},
@@ -99,5 +168,5 @@ export const schema = {
 	},
 	enums: {},
 	nonModels: {},
-	version: "1445a2104bf0ec7566f1c41a09f1b29a"
+	version: "226a80af058a99591f184b28f78706cc"
 };

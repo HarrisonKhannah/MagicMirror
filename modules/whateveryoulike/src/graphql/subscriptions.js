@@ -1,6 +1,93 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateUser = /* GraphQL */ `
+	subscription OnCreateUser {
+		onCreateUser {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const onUpdateUser = /* GraphQL */ `
+	subscription OnUpdateUser {
+		onUpdateUser {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const onDeleteUser = /* GraphQL */ `
+	subscription OnDeleteUser {
+		onDeleteUser {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
 export const onCreateCalander = /* GraphQL */ `
 	subscription OnCreateCalander {
 		onCreateCalander {
@@ -22,6 +109,7 @@ export const onCreateCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt
@@ -51,6 +139,7 @@ export const onUpdateCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt
@@ -80,6 +169,7 @@ export const onDeleteCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt

@@ -1,7 +1,16 @@
-type Calander @model {
+type User @model {
+  id: ID!
+  uuid: String!
+  name: String!
+  happiness: Int!
+  calander: [Calander!] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Calander @model @key(name: "byUser", fields: ["userID"]) {
   id: ID!
   uuid: String!
   Events: [Event] @connection(keyName: "byCalander", fields: ["id"])
+  userID: ID
 }
 
 type Event @model @key(name: "byCalander", fields: ["calanderID"]) {

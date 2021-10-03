@@ -1,6 +1,93 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createUser = /* GraphQL */ `
+	mutation CreateUser($input: CreateUserInput!, $condition: ModelUserConditionInput) {
+		createUser(input: $input, condition: $condition) {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const updateUser = /* GraphQL */ `
+	mutation UpdateUser($input: UpdateUserInput!, $condition: ModelUserConditionInput) {
+		updateUser(input: $input, condition: $condition) {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const deleteUser = /* GraphQL */ `
+	mutation DeleteUser($input: DeleteUserInput!, $condition: ModelUserConditionInput) {
+		deleteUser(input: $input, condition: $condition) {
+			id
+			uuid
+			name
+			happiness
+			calander {
+				items {
+					id
+					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
 export const createCalander = /* GraphQL */ `
 	mutation CreateCalander($input: CreateCalanderInput!, $condition: ModelCalanderConditionInput) {
 		createCalander(input: $input, condition: $condition) {
@@ -22,6 +109,7 @@ export const createCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt
@@ -51,6 +139,7 @@ export const updateCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt
@@ -80,6 +169,7 @@ export const deleteCalander = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			userID
 			_version
 			_deleted
 			_lastChangedAt

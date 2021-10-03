@@ -4,10 +4,21 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+export declare class User {
+  readonly id: string;
+  readonly uuid: string;
+  readonly name: string;
+  readonly happiness: number;
+  readonly calander?: Calander[];
+  constructor(init: ModelInit<User>);
+  static copyOf(source: User, mutator: (draft: MutableModel<User>) => MutableModel<User> | void): User;
+}
+
 export declare class Calander {
   readonly id: string;
   readonly uuid: string;
   readonly Events?: (Event | null)[];
+  readonly userID?: string;
   constructor(init: ModelInit<Calander>);
   static copyOf(source: Calander, mutator: (draft: MutableModel<Calander>) => MutableModel<Calander> | void): Calander;
 }
