@@ -2363,6 +2363,29 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
+"@event-calendar/common@~0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@event-calendar/common/-/common-0.7.0.tgz#b913dccb6a2dbab6a59d617460705e0cce75e0de"
+  integrity sha512-QTTJzj+ODyLKQsTaHPuINmVl+W3ufBQT0tQMtfY4SR7dzVrh6JPmVFFYjlUk31H0X3FSw/7mgQ0XsWbCb+E0LQ==
+  dependencies:
+    svelte "^3.42.4"
+
+"@event-calendar/core@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@event-calendar/core/-/core-0.7.0.tgz#5c4ff2be7c8174b1d050809bec0dfea8b68dd800"
+  integrity sha512-OxgWJYTaKuV6oFU8gkF8VVlpMptLCbCr0mv1a15PUq/u0RZKHIEOFK++OYGIoRRwRn+/7JaVZ7dPxaz7gBoQkQ==
+  dependencies:
+    "@event-calendar/common" "~0.7.0"
+    svelte "^3.42.4"
+
+"@event-calendar/time-grid@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@event-calendar/time-grid/-/time-grid-0.7.0.tgz#e72d8ab7f988e8eb5e29c2a24cf2296528da9d9f"
+  integrity sha512-jrcYS2rtWSWpNE03gZAI2vQ+5A1abKWRdk4BhsubRYI4U5vpvmzayXmi7A6+WrdVev60B22ya241Vdx18IASIw==
+  dependencies:
+    "@event-calendar/common" "~0.7.0"
+    svelte "^3.42.4"
+
 "@hot-loader/react-dom@^16.13.0":
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.13.0.tgz#de245b42358110baf80aaf47a0592153d4047997"
@@ -8844,6 +8867,11 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
+
+svelte@^3.42.4:
+  version "3.43.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.43.1.tgz#8370c08a970bcc1c118baaa86a38fae82e0a8396"
+  integrity sha512-nvPIaKx4HLzYlSdquISZpgG1Kqr2VAWQjZOt3Iwm3UhbqmA0LnSx4k1YpRMEhjQYW3ZCqQoK8Egto9tv4YewMA==
 
 svgo@^0.7.0:
   version "0.7.2"

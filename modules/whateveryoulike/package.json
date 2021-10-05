@@ -11,10 +11,12 @@
 	},
 	"proxy": "http://localhost:3000",
 	"dependencies": {
+		"@aws-amplify/datastore": "^3.4.2",
 		"@babel/core": "^7.10.1",
+		"@event-calendar/core": "^0.7.0",
+		"@event-calendar/time-grid": "^0.7.0",
 		"awesome-typescript-loader": "^5.2.1",
 		"aws-amplify": "latest",
-		"@aws-amplify/datastore": "^3.4.2",
 		"babel-cli": "^6.26.0",
 		"cors": "^2.8.5",
 		"react": "^16.13.1",
