@@ -2,8 +2,8 @@ import React from "react";
 import { hot } from "react-hot-loader/root";
 import Lobby from "./Lobby";
 import Room from "./Room";
-
-const VideoChat = ({ room, name }) => {
+import FamilySim from "../views/FamilySim/FamilySim";
+const VideoChat = ({ room, name, setView, setRoom }) => {
 	const [username, setUsername] = React.useState(name);
 	const [roomName, setRoomName] = React.useState(room);
 	const [token, setToken] = React.useState(null);
@@ -31,6 +31,7 @@ const VideoChat = ({ room, name }) => {
 	);
 	const handleLogout = React.useCallback((event) => {
 		setToken(null);
+		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
 	}, []);
 
 	React.useEffect(() => {
