@@ -79,7 +79,6 @@ const FamilySim = ({ setView, setRoom, room }) => {
 	const [users, setUsers] = React.useState([]);
 	async function getUsers() {
 		Amplify.configure(awsconfig);
-		DataStore.clear();
 		const user = await DataStore.query(User);
 		setUsers(user);
 	}

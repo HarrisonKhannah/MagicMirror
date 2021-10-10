@@ -16,5 +16,29 @@
 				}
 			}
 		}
+	},
+	"auth": {
+		"users8639b0d7": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"frontendAuthConfig": {
+				"loginMechanisms": ["EMAIL"],
+				"signupAttributes": ["EMAIL"],
+				"passwordProtectionSettings": {
+					"passwordPolicyMinLength": 8,
+					"passwordPolicyCharacters": []
+				},
+				"mfaConfiguration": "OFF",
+				"mfaTypes": ["SMS"]
+			}
+		}
+	},
+	"storage": {
+		"messages": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
 	}
 }

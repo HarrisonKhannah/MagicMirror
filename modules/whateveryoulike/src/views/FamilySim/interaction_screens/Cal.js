@@ -22,7 +22,6 @@ function formatDate(date) {
 }
 
 const Cal = ({ setView, user, setRoom, room }) => {
-	console.log(user);
 	const [e, setE] = React.useState([]);
 	const [calEvent, addCallEvent] = React.useState(<> </>);
 	async function getCal() {
@@ -41,7 +40,7 @@ const Cal = ({ setView, user, setRoom, room }) => {
 		return (
 			<div style={{ color: "white" }}>
 				<p>
-					Add {formatDate(date)} with {user[0].name}?
+					Add {formatDate(date)} with {user.name}?
 				</p>
 				<input
 					type="time"
@@ -60,10 +59,10 @@ const Cal = ({ setView, user, setRoom, room }) => {
 				/>
 				<button
 					onClick={async () => {
-						const cal = (await DataStore.query(Calander)).filter((c) => c.userID === user[0].id);
+						const cal = (await DataStore.query(Calander)).filter((c) => c.userID === user.id);
 						await DataStore.save(
 							new Event({
-								name: `Meeting with Mirror and ${user[0].name}`,
+								name: `Meeting with Mirror and ${user.name}`,
 								room: "2",
 								time: date.toISOString(),
 								calanderID: cal[0].id

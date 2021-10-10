@@ -62,10 +62,12 @@ export const Notification = ({ setView, setRoom }) => {
 					</div>
 				);
 			})}
-			<button onClick={() => setShow("0")} style={{ opacity: show }}>
-				{" "}
-				Dismiss all{" "}
-			</button>
+			{events.length > 0 ? (
+				<button onClick={() => setShow("0")} style={{ opacity: show }}>
+					{" "}
+					Dismiss all{" "}
+				</button>
+			) : null}
 		</div>
 	);
 };
