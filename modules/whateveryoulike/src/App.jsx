@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import FamilySim, { MirrorComp } from "./views/FamilySim/FamilySim";
 import { Notification } from "./views/FamilySim/Notification";
+import VideoChat from "./video-chat/VideoChat";
 const App = () => {
   const [view, setView] = React.useState();
   const [room, setRoom] = React.useState(null);
@@ -18,7 +19,9 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <div style={{ marginBottom: "100px", width: "80vw", height: "100%" }}>{view}</div>
+      <div style={{ marginBottom: "100px", width: "80vw", height: "100%" }}>
+        <VideoChat name="hello" room="hello" setRoom={setRoomTest} setView={test} />
+      </div>
       <div
         style={{
           position: "absolute",
@@ -29,7 +32,7 @@ const App = () => {
         <MirrorComp setView={setView} user={"MIRROR"} setRoom={setRoom} room={room} />
       </div>
 
-      <Notification setView={setView} setRoom={setRoom} />
+      {/* <Notification setView={setView} setRoom={setRoom} /> */}
     </div>
   );
 };

@@ -16,6 +16,7 @@
 		"@fullcalendar/daygrid": "^5.9.0",
 		"@fullcalendar/interaction": "^5.9.0",
 		"@fullcalendar/react": "^5.9.0",
+		"audio-react-recorder": "^1.0.4",
 		"awesome-typescript-loader": "^5.2.1",
 		"aws-amplify": "latest",
 		"babel-cli": "^6.26.0",

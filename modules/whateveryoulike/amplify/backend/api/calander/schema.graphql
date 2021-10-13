@@ -4,6 +4,14 @@ type User @model {
   name: String!
   happiness: Int!
   calander: [Calander!] @connection(keyName: "byUser", fields: ["id"])
+  message: [Message!] @connection(keyName: "byMessage", fields: ["id"])
+}
+type Message @model @key(name: "byMessage", fields: ["userID"]) {
+  id: ID!
+  from: String!
+  read: Boolean!
+  msg: String!
+  userID: ID
 }
 
 type Calander @model @key(name: "byUser", fields: ["userID"]) {

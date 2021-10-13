@@ -31,6 +31,9 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 	);
 	const handleLogout = React.useCallback((event) => {
 		setToken(null);
+		setTimeout(() => {
+			setView(<h1>Call ended</h1>);
+		}, [1000]);
 		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
 	}, []);
 

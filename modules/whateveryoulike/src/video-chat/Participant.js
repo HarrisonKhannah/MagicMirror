@@ -58,8 +58,7 @@ const Participant = ({ participant }) => {
 	}, [audioTracks]);
 
 	return (
-		<div className="participant">
-			<h3>{participant.identity}</h3>
+		<div className="participant" style={{ height: "10vh", width: "10vw", marginBottom: "10vh" }}>
 			<video ref={videoRef} autoPlay={true} />
 			<audio ref={audioRef} autoPlay={true} muted={true} />
 		</div>

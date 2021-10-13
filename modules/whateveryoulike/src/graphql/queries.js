@@ -13,6 +13,10 @@ export const syncUsers = /* GraphQL */ `
 					nextToken
 					startedAt
 				}
+				message {
+					nextToken
+					startedAt
+				}
 				_version
 				_deleted
 				_lastChangedAt
@@ -45,6 +49,22 @@ export const getUser = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
 			_version
 			_deleted
 			_lastChangedAt
@@ -65,6 +85,66 @@ export const listUsers = /* GraphQL */ `
 					nextToken
 					startedAt
 				}
+				message {
+					nextToken
+					startedAt
+				}
+				_version
+				_deleted
+				_lastChangedAt
+				createdAt
+				updatedAt
+			}
+			nextToken
+			startedAt
+		}
+	}
+`;
+export const syncMessages = /* GraphQL */ `
+	query SyncMessages($filter: ModelMessageFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {
+		syncMessages(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {
+			items {
+				id
+				from
+				read
+				msg
+				userID
+				_version
+				_deleted
+				_lastChangedAt
+				createdAt
+				updatedAt
+			}
+			nextToken
+			startedAt
+		}
+	}
+`;
+export const getMessage = /* GraphQL */ `
+	query GetMessage($id: ID!) {
+		getMessage(id: $id) {
+			id
+			from
+			read
+			msg
+			userID
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const listMessages = /* GraphQL */ `
+	query ListMessages($filter: ModelMessageFilterInput, $limit: Int, $nextToken: String) {
+		listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+			items {
+				id
+				from
+				read
+				msg
+				userID
 				_version
 				_deleted
 				_lastChangedAt

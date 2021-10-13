@@ -44,6 +44,20 @@ export const schema = {
 						connectionType: "HAS_MANY",
 						associatedWith: "userID"
 					}
+				},
+				message: {
+					name: "message",
+					isArray: true,
+					type: {
+						model: "Message"
+					},
+					isRequired: true,
+					attributes: [],
+					isArrayNullable: true,
+					association: {
+						connectionType: "HAS_MANY",
+						associatedWith: "userID"
+					}
 				}
 			},
 			syncable: true,
@@ -164,9 +178,64 @@ export const schema = {
 					}
 				}
 			]
+		},
+		Message: {
+			name: "Message",
+			fields: {
+				id: {
+					name: "id",
+					isArray: false,
+					type: "ID",
+					isRequired: true,
+					attributes: []
+				},
+				from: {
+					name: "from",
+					isArray: false,
+					type: "String",
+					isRequired: true,
+					attributes: []
+				},
+				read: {
+					name: "read",
+					isArray: false,
+					type: "Boolean",
+					isRequired: true,
+					attributes: []
+				},
+				msg: {
+					name: "msg",
+					isArray: false,
+					type: "String",
+					isRequired: true,
+					attributes: []
+				},
+				userID: {
+					name: "userID",
+					isArray: false,
+					type: "ID",
+					isRequired: false,
+					attributes: []
+				}
+			},
+			syncable: true,
+			pluralName: "Messages",
+			attributes: [
+				{
+					type: "model",
+					properties: {}
+				},
+				{
+					type: "key",
+					properties: {
+						name: "byMessage",
+						fields: ["userID"]
+					}
+				}
+			]
 		}
 	},
 	enums: {},
 	nonModels: {},
-	version: "226a80af058a99591f184b28f78706cc"
+	version: "d8586e6c032435164769ff3d973351fb"
 };

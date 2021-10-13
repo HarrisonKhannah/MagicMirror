@@ -39,6 +39,10 @@
 		"messages": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
+		},
+		"messagesText": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }

@@ -22,6 +22,22 @@ export const createUser = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
 			_version
 			_deleted
 			_lastChangedAt
@@ -41,6 +57,22 @@ export const updateUser = /* GraphQL */ `
 				items {
 					id
 					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
 					userID
 					_version
 					_deleted
@@ -80,6 +112,70 @@ export const deleteUser = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const createMessage = /* GraphQL */ `
+	mutation CreateMessage($input: CreateMessageInput!, $condition: ModelMessageConditionInput) {
+		createMessage(input: $input, condition: $condition) {
+			id
+			from
+			read
+			msg
+			userID
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const updateMessage = /* GraphQL */ `
+	mutation UpdateMessage($input: UpdateMessageInput!, $condition: ModelMessageConditionInput) {
+		updateMessage(input: $input, condition: $condition) {
+			id
+			from
+			read
+			msg
+			userID
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const deleteMessage = /* GraphQL */ `
+	mutation DeleteMessage($input: DeleteMessageInput!, $condition: ModelMessageConditionInput) {
+		deleteMessage(input: $input, condition: $condition) {
+			id
+			from
+			read
+			msg
+			userID
 			_version
 			_deleted
 			_lastChangedAt

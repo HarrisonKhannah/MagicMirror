@@ -6,6 +6,7 @@ import { User } from "../../models";
 import Cal from "./interaction_screens/Cal";
 import img from "../../assets/Vector.png";
 import { Settings } from "./Settings";
+import MessageComp from "./interaction_screens/Message";
 const UserMenu = ({ setView, user, setRoom, room }) => {
 	return (
 		<div>
@@ -17,7 +18,13 @@ const UserMenu = ({ setView, user, setRoom, room }) => {
 				Calander
 			</div>
 			<div>Call</div>
-			<div>Message</div>
+			<div
+				onClick={() => {
+					setView(<MessageComp setView={setView} user={user} setRoom={setRoom} room={room} />);
+				}}
+			>
+				Message
+			</div>
 		</div>
 	);
 };

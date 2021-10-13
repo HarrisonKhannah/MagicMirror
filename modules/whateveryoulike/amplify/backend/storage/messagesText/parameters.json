@@ -1,0 +1,5 @@
+{
+	"tableName": "messagesText",
+	"partitionKeyName": "uuid",
+	"partitionKeyType": "S"
+}

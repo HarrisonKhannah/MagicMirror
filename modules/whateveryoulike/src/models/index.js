@@ -2,6 +2,6 @@
 import { initSchema } from "@aws-amplify/datastore";
 import { schema } from "./schema";
 
-const { User, Calander, Event } = initSchema(schema);
+const { User, Calander, Event, Message } = initSchema(schema);
 
-export { User, Calander, Event };
+export { User, Calander, Event, Message };

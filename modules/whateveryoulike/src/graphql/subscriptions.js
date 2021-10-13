@@ -22,6 +22,22 @@ export const onCreateUser = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
 			_version
 			_deleted
 			_lastChangedAt
@@ -41,6 +57,22 @@ export const onUpdateUser = /* GraphQL */ `
 				items {
 					id
 					uuid
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
 					userID
 					_version
 					_deleted
@@ -80,6 +112,70 @@ export const onDeleteUser = /* GraphQL */ `
 				nextToken
 				startedAt
 			}
+			message {
+				items {
+					id
+					from
+					read
+					msg
+					userID
+					_version
+					_deleted
+					_lastChangedAt
+					createdAt
+					updatedAt
+				}
+				nextToken
+				startedAt
+			}
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const onCreateMessage = /* GraphQL */ `
+	subscription OnCreateMessage {
+		onCreateMessage {
+			id
+			from
+			read
+			msg
+			userID
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const onUpdateMessage = /* GraphQL */ `
+	subscription OnUpdateMessage {
+		onUpdateMessage {
+			id
+			from
+			read
+			msg
+			userID
+			_version
+			_deleted
+			_lastChangedAt
+			createdAt
+			updatedAt
+		}
+	}
+`;
+export const onDeleteMessage = /* GraphQL */ `
+	subscription OnDeleteMessage {
+		onDeleteMessage {
+			id
+			from
+			read
+			msg
+			userID
 			_version
 			_deleted
 			_lastChangedAt
