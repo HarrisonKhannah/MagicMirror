@@ -24,6 +24,13 @@ export const schema = {
 					isRequired: true,
 					attributes: []
 				},
+				timezone: {
+					name: "timezone",
+					isArray: false,
+					type: "String",
+					isRequired: false,
+					attributes: []
+				},
 				happiness: {
 					name: "happiness",
 					isArray: false,
@@ -237,5 +244,5 @@ export const schema = {
 	},
 	enums: {},
 	nonModels: {},
-	version: "d8586e6c032435164769ff3d973351fb"
+	version: "fe24dea83575b01a42edd687a2682390"
 };

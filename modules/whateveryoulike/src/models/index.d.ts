@@ -8,6 +8,7 @@ export declare class User {
   readonly id: string;
   readonly uuid: string;
   readonly name: string;
+  readonly timezone?: string;
   readonly happiness: number;
   readonly calander?: Calander[];
   readonly message?: Message[];

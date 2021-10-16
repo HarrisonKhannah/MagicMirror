@@ -7,6 +7,7 @@ export const createUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {
@@ -52,6 +53,7 @@ export const updateUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {
@@ -97,6 +99,7 @@ export const deleteUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {

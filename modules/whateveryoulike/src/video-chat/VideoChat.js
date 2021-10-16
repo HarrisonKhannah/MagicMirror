@@ -15,7 +15,7 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 	}, []);
 	const handleSubmit = React.useCallback(
 		async (event) => {
-			const data = await fetch("http://localhost:3001/video/token", {
+			const data = await fetch("http://192.168.1.103:3001/video/token", {
 				method: "POST",
 				body: JSON.stringify({
 					identity: username,
@@ -31,9 +31,9 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 	);
 	const handleLogout = React.useCallback((event) => {
 		setToken(null);
-		setTimeout(() => {
-			setView(<h1>Call ended</h1>);
-		}, [1000]);
+		setView(<h1>Call ended</h1>);
+
+		setTimeout(() => {}, [1000]);
 		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
 	}, []);
 

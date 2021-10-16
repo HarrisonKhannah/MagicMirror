@@ -12,6 +12,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: #333e5a;
   min-height: 100%;
+  background: #000 !important;
 }
 
 header {
@@ -51,6 +52,7 @@ h2 {
   font-weight: 300;
   margin-bottom: 1em;
   text-align: center;
+  color: #000 !important;
 }
 
 form > div {

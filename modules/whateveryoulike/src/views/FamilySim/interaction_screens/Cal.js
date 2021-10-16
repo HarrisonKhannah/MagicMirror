@@ -7,6 +7,9 @@ import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import VideoChat from "../../../video-chat/VideoChat";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
+import { Flex, IconButton, Text, Box } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
+import FamilySim from "../FamilySim";
 
 function formatDate(date) {
 	var d = new Date(date),
@@ -81,11 +84,18 @@ const Cal = ({ setView, user, setRoom, room }) => {
 	React.useEffect(() => {
 		getCal();
 	}, []);
-
 	return (
-		<>
+		<Box marginBottom="-20px">
 			<div>{calEvent}</div>
-			<div style={{ backgroundColor: "white", height: "70vh", padding: "10px", borderRadius: "10px" }}>
+			<Flex justifyContent="space-between" paddingBottom={2}>
+				<Text size={"lg"} textAlign="left">
+					{user.name}'s Calander
+					<br />
+					{user.name}'s Timezone:
+				</Text>
+				<IconButton colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
+			</Flex>
+			<div style={{ backgroundColor: "white", color: "black", height: "70vh", padding: "10px", borderRadius: "10px" }}>
 				<FullCalendar
 					height={"90%"}
 					plugins={[dayGridPlugin, interactionPlugin]}
@@ -110,9 +120,11 @@ const Cal = ({ setView, user, setRoom, room }) => {
 							</div>
 						);
 					}}
+					eventColor="#378006"
+					eventBackgroundColor="black"
 				/>
 			</div>
-		</>
+		</Box>
 	);
 };
 export default Cal;

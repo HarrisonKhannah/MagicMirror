@@ -7,6 +7,7 @@ export const onCreateUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {
@@ -52,6 +53,7 @@ export const onUpdateUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {
@@ -97,6 +99,7 @@ export const onDeleteUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {

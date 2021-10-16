@@ -2,6 +2,7 @@ type User @model {
   id: ID!
   uuid: String!
   name: String!
+  timezone: String
   happiness: Int!
   calander: [Calander!] @connection(keyName: "byUser", fields: ["id"])
   message: [Message!] @connection(keyName: "byMessage", fields: ["id"])

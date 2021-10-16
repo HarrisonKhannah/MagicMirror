@@ -8,6 +8,7 @@ export const syncUsers = /* GraphQL */ `
 				id
 				uuid
 				name
+				timezone
 				happiness
 				calander {
 					nextToken
@@ -34,6 +35,7 @@ export const getUser = /* GraphQL */ `
 			id
 			uuid
 			name
+			timezone
 			happiness
 			calander {
 				items {
@@ -80,6 +82,7 @@ export const listUsers = /* GraphQL */ `
 				id
 				uuid
 				name
+				timezone
 				happiness
 				calander {
 					nextToken
