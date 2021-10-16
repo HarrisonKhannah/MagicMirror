@@ -38,6 +38,10 @@ h1 {
   flex-direction: column;
 }
 
+.audio-react-recorder__canvas {
+  position: relative !important;
+  bottom: 50px !important;
+}
 main {
   background: #ffffff;
   flex-grow: 1;
