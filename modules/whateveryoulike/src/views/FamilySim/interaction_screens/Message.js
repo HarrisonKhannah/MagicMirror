@@ -1,18 +1,47 @@
 import React from "react";
 import Amplify, { DataStore, Storage } from "aws-amplify";
-import Lottie from "react-lottie";
-import awsconfig from "../../../aws-exports";
 import { Message, User } from "../../../models";
-import FullCalendar from "@fullcalendar/react"; // must go before plugins
-import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
-import VideoChat from "../../../video-chat/VideoChat";
-import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import AudioReactRecorder, { RecordState } from "audio-react-recorder";
 import FamilySim from "../FamilySim";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, IconButton, CloseButton } from "@chakra-ui/react";
 import pencil from "../../../assets/pencil_5.png";
 import mic from "../../../assets/Group_48.png";
 import send from "../../../assets/send_1.png";
+import send2 from "../../../assets/send_2.png";
+import { CloseIcon } from "@chakra-ui/icons";
+
+const MessageSent = ({ setView, user, setRoom, room }) => {
+	setTimeout(() => {
+		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
+	}, [2000]);
+	return (
+		<Box>
+			<IconButton position="relative" left="40vw" top="2vh" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
+
+			<Flex h={"70vh"} flexDirection={"row"} background="gray.800" justifyContent={"center"} borderRadius={10} alignItems="center">
+				<Flex
+					marginTop={5}
+					borderRadius="100"
+					onClick={() => {
+						uploadFile;
+						setTimeout(() => {
+							setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
+						}, [2000]);
+					}}
+					shadow
+					justifyContent={"center"}
+					alignItems="center"
+					p={2}
+				>
+					<Image src={send2} />
+				</Flex>
+				<Text marginTop={5} fontSize="xl">
+					Message sent!
+				</Text>
+			</Flex>
+		</Box>
+	);
+};
 
 const MessageAudio = ({ setView, user, setRoom, room }) => {
 	const [record, setRecord] = React.useState(RecordState.PAUSE);
@@ -46,7 +75,6 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 		}
 	};
 	React.useEffect(() => {
-		console.log();
 		if (record == RecordState.PAUSE) {
 			setViewMic(
 				<Box marginRight={5} w={120}>
@@ -111,6 +139,7 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 							backgroundColor="green.500"
 							onClick={() => {
 								uploadFile;
+								setView(<MessageSent setView={setView} setRoom={setRoom} room={room} user={user} />);
 							}}
 							shadow
 							p={5}
@@ -125,58 +154,35 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 		}
 	}, [record]);
 	return (
-		<Flex h={"70vh"} flexDirection={"column"} background="gray.800" justifyContent={"center"} borderRadius={10}>
-			<Text fontWeight="bold" fontSize="2xl">
-				Send message to {user.name}
-			</Text>
-			<Text>Choose one of the two options below:</Text>
-			<Flex flexDirection={"column"} alignItems={"center"} marginTop={10}>
-				<Box w={"19vh"} borderRadius="100" overflow={"hidden"} marginBottom={10} background={"purple.300"} h={"19vh"}>
-					<AudioReactRecorder
-						state={record}
-						type={"wav"}
-						onStop={(value) => {
-							setSource(value);
-							if (audioRef.current) {
-								audioRef.current.pause();
-								audioRef.current.load();
-							}
-						}}
-					/>
-				</Box>
-				<audio controls ref={audioRef}>
-					{source != null ? <source src={source.url} type="audio/wav" /> : null}
-				</audio>
-				{view}
-				{/* <Box
-					marginTop={5}
-					borderRadius="100"
-					backgroundColor="red.500"
-					onClick={() => {
-						setRecord(RecordState.START);
-					}}
-					shadow
-					p={5}
-				>
-					<Image src={mic} h={5} />
-				</Box>
-				Press to record
-				<button
-					onClick={() => {
-						setRecord(RecordState.STOP);
-					}}
-				>
-					Stop
-				</button>
-				<button
-					onClick={() => {
-						uploadFile();
-					}}
-				>
-					Upload
-				</button> */}
+		<Box>
+			<IconButton position="relative" left="40vw" top="2vh" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
+
+			<Flex h={"70vh"} flexDirection={"column"} background="gray.800" justifyContent={"center"} borderRadius={10}>
+				<Text fontWeight="bold" fontSize="2xl">
+					Send message to {user.name}
+				</Text>
+				<Text>Choose one of the two options below:</Text>
+				<Flex flexDirection={"column"} alignItems={"center"} marginTop={10}>
+					<Box w={"19vh"} borderRadius="100" overflow={"hidden"} marginBottom={10} background={"purple.300"} h={"19vh"}>
+						<AudioReactRecorder
+							state={record}
+							type={"wav"}
+							onStop={(value) => {
+								setSource(value);
+								if (audioRef.current) {
+									audioRef.current.pause();
+									audioRef.current.load();
+								}
+							}}
+						/>
+					</Box>
+					<audio controls ref={audioRef}>
+						{source != null ? <source src={source.url} type="audio/wav" /> : null}
+					</audio>
+					{view}
+				</Flex>
 			</Flex>
-		</Flex>
+		</Box>
 	);
 };
 
@@ -195,7 +201,7 @@ const MessageText = ({ setView, user, setRoom, room }) => {
 	}, []);
 	async function saveMessage() {
 		try {
-			let msg = await DataStore.save(
+			await DataStore.save(
 				new Message({
 					from: user.name,
 					read: false,
@@ -203,103 +209,136 @@ const MessageText = ({ setView, user, setRoom, room }) => {
 					userID: recp.id
 				})
 			);
-			setView(<h1>Message sent!</h1>);
-			setTimeout(() => {
-				setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
-			}, [1000]);
+			setView(<MessageSent user={user} setView={setView} setRoom={setRoom} room={room} />);
 		} catch (e) {
 			console.log(e);
 		}
 	}
 	return (
-		<form
-			onSubmit={(e) => {
-				e.preventDefault();
-				saveMessage();
-			}}
-		>
-			<label>
-				Recipicant
-				<select
-					onChange={(val) => {
-						setRecp(val);
-					}}
-				>
-					{users.map((user) => {
-						return <option value={user}>{user.name}</option>;
-					})}
-				</select>
-			</label>
-			<label>
-				Message:
-				<input
-					type="text"
-					name="msg"
-					onChange={(v) => {
-						setMsg(v.target.value);
-					}}
-				/>
-			</label>
+		<Box>
+			<IconButton position="relative" left="40vw" top="2vh" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
 
-			<input type="submit" value="Submit" />
-		</form>
+			<Flex h={"70vh"} flexDirection={"column"} background="gray.800" justifyContent={"center"} borderRadius={10}>
+				<Text fontWeight="bold" fontSize="2xl">
+					Text message to {user.name}
+				</Text>
+				<Text>Type a message or choose some of the sample prompts below:</Text>
+				<Flex flexDirection={"column"} alignItems={"center"} margin={100} p={10} background="gray.800">
+					<FormControl
+						onSubmit={(e) => {
+							console.log("hello");
+							e.preventDefault();
+							saveMessage();
+						}}
+					>
+						<FormLabel>
+							<Input
+								background="white"
+								isReadOnly
+								type="text"
+								name="msg"
+								value="Thinking of you!"
+								onClick={(v) => {
+									setMsg(v.target.value);
+								}}
+							/>
+							<Input
+								isReadOnly
+								type="text"
+								name="msg"
+								value="Call me!"
+								onClick={(v) => {
+									setMsg(v.target.value);
+								}}
+							/>
+							<Input
+								isReadOnly
+								type="text"
+								name="msg"
+								marginBottom={10}
+								value="I love you <3"
+								onClick={(v) => {
+									setMsg(v.target.value);
+								}}
+							/>
+							Input your own:
+							<Input
+								type="text"
+								name="msg"
+								onChange={(v) => {
+									setMsg(v.target.value);
+								}}
+							/>
+						</FormLabel>
+
+						<Button mt={4} colorScheme="teal" type="submit">
+							Submit
+						</Button>
+					</FormControl>
+				</Flex>
+			</Flex>
+		</Box>
 	);
 };
 
 const MessageComp = ({ setView, user, setRoom, room }) => {
 	return (
-		<Flex h={"50vh"} flexDirection={"column"} background="gray.800" justifyContent={"center"} borderRadius={10} marginBottom="20vh">
-			<Text fontWeight="bold" fontSize="2xl">
-				Send message to {user.name}
-			</Text>
-			<Text>Choose one of the two options below:</Text>
-			<Flex flexDirection={"row"} justifyContent={"space-around"} marginTop={10}>
-				<Flex
-					alignItems="center"
-					justifyContent={"center"}
-					flexDirection={"column"}
-					onClick={() => {
-						setView(<MessageAudio setView={setView} user={user} setRoom={setRoom} room={room} />);
-					}}
-					background="gray.900"
-					maxW="sm"
-					borderWidth="1px"
-					borderColor="white"
-					borderRadius="lg"
-					overflow="hidden"
-					p={5}
-					w={"15vw"}
-				>
-					Audio
-					<Box w={50} m={2}>
-						<Image src={mic} />
-					</Box>
-					Send
-				</Flex>
-				<Flex
-					justifyContent={"center"}
-					flexDirection={"column"}
-					background="gray.900"
-					maxW="sm"
-					borderWidth="1px"
-					borderColor="white"
-					borderRadius="lg"
-					overflow="hidden"
-					w={"15vw"}
-					alignItems="center"
-					p={5}
-					onClick={() => {
-						setView(<MessageText setView={setView} user={user} setRoom={setRoom} room={room} />);
-					}}
-				>
-					Text
-					<Box w={50} m={2}>
-						<Image src={pencil} />
-					</Box>
-					Send
+		<Box>
+			<IconButton position="relative" left="40vw" top="2vh" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
+
+			<Flex h={"50vh"} flexDirection={"column"} background="gray.800" justifyContent={"center"} borderRadius={10} marginBottom="20vh">
+				<Text fontWeight="bold" fontSize="2xl">
+					Send message to {user.name}
+				</Text>
+				<Text>Choose one of the two options below:</Text>
+				<Flex flexDirection={"row"} justifyContent={"space-around"} marginTop={10}>
+					<Flex
+						alignItems="center"
+						justifyContent={"center"}
+						flexDirection={"column"}
+						onClick={() => {
+							setView(<MessageAudio setView={setView} user={user} setRoom={setRoom} room={room} />);
+						}}
+						background="gray.900"
+						maxW="sm"
+						borderWidth="1px"
+						borderColor="white"
+						borderRadius="lg"
+						overflow="hidden"
+						p={5}
+						w={"15vw"}
+					>
+						Audio
+						<Box w={50} m={2}>
+							<Image src={mic} />
+						</Box>
+						Send
+					</Flex>
+					<Flex
+						justifyContent={"center"}
+						flexDirection={"column"}
+						background="gray.900"
+						maxW="sm"
+						borderWidth="1px"
+						borderColor="white"
+						borderRadius="lg"
+						overflow="hidden"
+						w={"15vw"}
+						alignItems="center"
+						p={5}
+						onClick={() => {
+							setView(<MessageText setView={setView} user={user} setRoom={setRoom} room={room} />);
+						}}
+					>
+						Text
+						<Box w={50} m={2}>
+							<Image src={pencil} />
+						</Box>
+						Send
+					</Flex>
 				</Flex>
 			</Flex>
-		</Flex>
+		</Box>
 	);
 };
 

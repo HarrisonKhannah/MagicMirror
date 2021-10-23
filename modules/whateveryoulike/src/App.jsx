@@ -30,11 +30,9 @@ const App = () => {
           style={{
             position: "absolute",
             left: "100%",
-            bottom: "40%"
+            bottom: "4%"
           }}
-        >
-          <MirrorComp setView={setView} user={"MIRROR"} setRoom={setRoom} room={room} />
-        </div>
+        ></div>
 
         <Notification setView={setView} setRoom={setRoom} />
       </div>

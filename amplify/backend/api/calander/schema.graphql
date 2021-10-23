@@ -1,0 +1,31 @@
+type User @model {
+  id: ID!
+  uuid: String!
+  name: String!
+  timezone: String
+  happiness: Int!
+  calander: [Calander!] @connection(keyName: "byUser", fields: ["id"])
+  message: [Message!] @connection(keyName: "byMessage", fields: ["id"])
+}
+type Message @model @key(name: "byMessage", fields: ["userID"]) {
+  id: ID!
+  from: String!
+  read: Boolean!
+  msg: String!
+  userID: ID
+}
+
+type Calander @model @key(name: "byUser", fields: ["userID"]) {
+  id: ID!
+  uuid: String!
+  Events: [Event] @connection(keyName: "byCalander", fields: ["id"])
+  userID: ID
+}
+
+type Event @model @key(name: "byCalander", fields: ["calanderID"]) {
+  id: ID!
+  name: String!
+  room: String!
+  time: AWSDateTime
+  calanderID: ID
+}
