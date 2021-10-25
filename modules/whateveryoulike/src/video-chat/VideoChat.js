@@ -2,7 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader/root";
 import Lobby from "./Lobby";
 import Room from "./Room";
-import FamilySim from "../views/FamilySim/FamilySim";
+
 const VideoChat = ({ room, name, setView, setRoom }) => {
 	const [username, setUsername] = React.useState(name);
 	const [roomName, setRoomName] = React.useState(room);
@@ -15,7 +15,7 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 	}, []);
 	const handleSubmit = React.useCallback(
 		async (event) => {
-			const data = await fetch("http://192.168.1.103:3001/video/token", {
+			const data = await fetch("http://localhost:3001/video/token", {
 				method: "POST",
 				body: JSON.stringify({
 					identity: username,
@@ -29,18 +29,12 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 		},
 		[username, roomName]
 	);
-	const handleLogout = React.useCallback((event) => {
-		setToken(null);
-		setView(<h1>Call ended</h1>);
-
-		setTimeout(() => {}, [1000]);
-		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
-	}, []);
-
 	React.useEffect(() => {
 		handleSubmit();
 	}, []);
-
+	const handleLogout = React.useCallback((event) => {
+		setToken(null);
+	}, []);
 	let render;
 	if (token) {
 		render = <Room roomName={roomName} token={token} handleLogout={handleLogout} />;
@@ -48,6 +42,7 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 		render = <Lobby username={username} roomName={roomName} handleUsernameChange={handleUsernameChange} handleRoomNameChange={handleRoomNameChange} handleSubmit={handleSubmit} />;
 	}
 	return render;
+	// return <div>Hello</div>;
 };
 
 export default hot(VideoChat);

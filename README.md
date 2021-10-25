@@ -8,7 +8,7 @@ To start the system:
 2. `npm run server` at this level.
 3. Paste your `env` into `modules/whateveryoulike`
    In a new terminal window:
-4. `yarn install` at `modules/whateveryoulike` level
+4. `yarn` at `modules/whateveryoulike` level
 5. `yarn start` at `modules/whateveryoulike` level
 
 </p>
