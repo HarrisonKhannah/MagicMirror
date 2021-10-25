@@ -25,7 +25,9 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <div className="App">
-        <div style={{ marginBottom: "100px", width: "80vw", height: "100%" }}>{view}</div>
+        <div style={{ marginBottom: "100px", width: "80vw", height: "100%" }}>
+          <VideoChat name="name" room="room" setRoom={setRoom} setView={setView} />
+        </div>
         <div
           style={{
             position: "absolute",

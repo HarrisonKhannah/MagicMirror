@@ -105,12 +105,16 @@ button:hover {
 .local-participant {
   text-align: center;
   margin-bottom: 2em;
+  position: relative;
+  left: 65vw;
+  top: 70vh;
 }
 .remote-participants {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   padding: 0 2em 2em;
+  height: 80vh;
 }
 .participant {
   padding: 10px;
