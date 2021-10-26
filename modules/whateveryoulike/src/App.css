@@ -90,6 +90,7 @@ button:hover {
 
 .room {
   position: relative;
+  height: 70vh;
 }
 .room button {
   position: absolute;
@@ -106,21 +107,29 @@ button:hover {
   text-align: center;
   margin-bottom: 2em;
   position: relative;
-  left: 65vw;
-  top: 70vh;
+  bottom: 11vh;
+  left: 50vh;
 }
 .remote-participants {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   padding: 0 2em 2em;
-  height: 80vh;
+  height: 70vh;
+  width: 100vw;
 }
 .participant {
   padding: 10px;
   border-radius: 6px;
   display: inline-block;
   margin-right: 10px;
+}
+.menu-bar {
+  text-align: center;
+  position: relative;
+  bottom: 33vh;
+  left: 20vh;
+  height: 9vh;
 }
 .participant:last-child {
   margin-right: 0;
@@ -131,7 +140,11 @@ button:hover {
   color: #fff;
 }
 
-video {
+.participant img {
+  height: 100%;
+}
+video,
+img {
   width: 100%;
   max-width: 600px;
   display: block;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Participant = ({ participant }) => {
+const Participant = ({ participant, local }) => {
 	const [videoTracks, setVideoTracks] = React.useState([]);
 	const [audioTracks, setAudioTracks] = React.useState([]);
 	const videoRef = React.useRef();
@@ -57,8 +57,17 @@ const Participant = ({ participant }) => {
 		}
 	}, [audioTracks]);
 
+	if (local) {
+		return (
+			<div className="participant" style={{ height: "10vh", width: "10vw", marginBottom: "10vh" }}>
+				<video ref={videoRef} autoPlay={true} />
+				<audio ref={audioRef} autoPlay={true} muted={true} />
+			</div>
+		);
+	}
+
 	return (
-		<div className="participant" style={{ height: "10vh", width: "10vw", marginBottom: "10vh" }}>
+		<div className="participant" style={{ width: "80vw", height: "70vh", overflow: "hidden" }}>
 			<video ref={videoRef} autoPlay={true} />
 			<audio ref={audioRef} autoPlay={true} muted={true} />
 		</div>
