@@ -1,5 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader/root";
+import { EndedScreen } from "./Ended";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
@@ -33,6 +34,7 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 		handleSubmit();
 	}, []);
 	const handleLogout = React.useCallback((event) => {
+		setView(<EndedScreen room={room} setView={setView} setRoom={setRoom} />);
 		setToken(null);
 	}, []);
 	let render;

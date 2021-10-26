@@ -20,7 +20,7 @@ const App = () => {
     setRoom(v);
   };
   React.useEffect(() => {
-    test(<VideoChat room="room" name={Math.random().toString()} setView={setView} setRoom={setRoom} />);
+    test(<FamilySim setView={test} setRoom={setRoomTest} room={room} />);
   }, []);
 
   return (
