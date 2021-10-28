@@ -110,7 +110,7 @@ const UserComp = ({ setView, user, setRoom, room }) => {
 						<UserMenu setView={setView} user={user} setRoom={setRoom} room={room} />
 					</div>
 					<div>
-						<Lottie options={{ loop: true, path: "https://assets9.lottiefiles.com/packages/lf20_lgxl1acg.json" }} height={100} width={100} />
+						<Lottie options={{ loop: true, path: "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json" }} height={100} width={100} />
 					</div>
 				</Box>
 			</div>
