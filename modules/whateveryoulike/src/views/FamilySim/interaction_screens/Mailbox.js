@@ -29,7 +29,7 @@ export const Mailbox = ({ setView, user, setRoom, room }) => {
 					{msg.map((m, i) => {
 						return (
 							<Box
-								h="8%"
+								h="100%"
 								w="100%"
 								onClick={() => {
 									let mutate = msg;
@@ -38,7 +38,9 @@ export const Mailbox = ({ setView, user, setRoom, room }) => {
 								}}
 							>
 								<Flex alignItems="center" h="100%" w="100%">
-									<Image h="50%" src={m.read ? msgOpen : msgClosed} marginRight="10px" />
+									<Box w="10%" h="100%" marginRight="10px">
+										<Image w="50%" src={m.read ? msgOpen : msgClosed} />
+									</Box>
 									<Text>
 										{m.msg} from: {m.from}
 									</Text>

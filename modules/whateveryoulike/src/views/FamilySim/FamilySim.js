@@ -98,6 +98,15 @@ const MirrorSettings = ({ setView, user, setRoom, room, setShow }) => {
 };
 const UserComp = ({ setView, user, setRoom, room }) => {
 	const [show, setShow] = React.useState(false);
+
+	let link = "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json";
+
+	if (user.happiness > 40 && user.happiness < 90) {
+		link = "https://assets1.lottiefiles.com/packages/lf20_fbppr6l4/json copy/okay_boy.json";
+	} else if (user.happiness <= 40 || user.name == "Lily") {
+		link = "https://assets9.lottiefiles.com/packages/lf20_bnf07c5p/json/sad_boy.json";
+	}
+
 	return (
 		<div>
 			<div
@@ -110,7 +119,7 @@ const UserComp = ({ setView, user, setRoom, room }) => {
 						<UserMenu setView={setView} user={user} setRoom={setRoom} room={room} />
 					</div>
 					<div>
-						<Lottie options={{ loop: true, path: "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json" }} height={100} width={100} />
+						<Lottie options={{ loop: true, path: link }} height={100} width={200} />
 					</div>
 				</Box>
 			</div>
