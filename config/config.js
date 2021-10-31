@@ -41,7 +41,7 @@ let config = {
 		{
 			module: "alert",
 		},{
-      module: 'whateveryoulike',
+      module: 'family-sim',
       position: 'bottom_center	'
     },
 		{
