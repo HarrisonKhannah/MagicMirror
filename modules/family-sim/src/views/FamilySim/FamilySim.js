@@ -15,6 +15,7 @@ import mail from "../../assets/Group_46.png";
 import settings from "../../assets/Group_47.png";
 import { Mailbox } from "./interaction_screens/Mailbox";
 import { Settings } from "./Settings";
+import VideoChat from "../../video-chat/VideoChat";
 const UserMenu = ({ setView, user, setRoom, room }) => {
 	return (
 		<Box pos={"absolute"} left={"30vw"} bottom={"50vh"} bg="gray.800" p={5} borderRadius={10} shadow={1}>
@@ -31,7 +32,12 @@ const UserMenu = ({ setView, user, setRoom, room }) => {
 					<Avatar background={"transparent"} name="Calander" src={cal} />
 					<Box>Calander</Box>
 				</Box>
-				<Box p={5}>
+				<Box
+					p={5}
+					onClick={() => {
+						setView(<VideoChat name={"Called"} room="1" setRoom={setRoom} setView={setView} user={user} />);
+					}}
+				>
 					<Avatar background={"transparent"} name="Phone" src={phone} />
 					<Box>Call</Box>
 				</Box>
@@ -103,7 +109,7 @@ const UserComp = ({ setView, user, setRoom, room }) => {
 
 	if (user.happiness > 40 && user.happiness < 90) {
 		link = "https://assets1.lottiefiles.com/packages/lf20_fbppr6l4/json copy/okay_boy.json";
-	} else if (user.happiness <= 40 || user.name == "Lily") {
+	} else if (user.happiness <= 40) {
 		link = "https://assets9.lottiefiles.com/packages/lf20_bnf07c5p/json/sad_boy.json";
 	}
 

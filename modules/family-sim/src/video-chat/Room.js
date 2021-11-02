@@ -58,16 +58,16 @@ const Room = ({ roomName, token, handleLogout }) => {
 			<div className="menu-bar">
 				<Box backgroundColor="gray.800" w="40%" borderRadius="50" shadow h="100%">
 					<Flex justifyContent="space-around" p={3} h="100%">
-						<Circle backgroundColor="gray.900" h="100%" p={3.5} borderRadius="40">
+						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">
 							<Image src={img1} h="100%" />
 						</Circle>
-						<Circle backgroundColor="gray.900" h="100%" p={3.5} borderRadius="40">
+						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">
 							<Image src={img2} h="100%" />
 						</Circle>
-						<Circle backgroundColor="gray.900" h="100%" p={3.5} borderRadius="40">
+						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">
 							<Image src={img3} h="100%" />
 						</Circle>
-						<Circle onClick={handleLogout} h="100%" backgroundColor="red.500" p={3.5} borderRadius="40">
+						<Circle onClick={handleLogout} h="6vh" backgroundColor="red.500" p={3.5} borderRadius="40">
 							<Image src={img4} h="100%" />
 						</Circle>
 					</Flex>

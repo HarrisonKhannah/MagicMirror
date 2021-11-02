@@ -4,6 +4,8 @@ import Lottie from "react-lottie";
 import awsconfig from "../../../aws-exports";
 import { User, Calander } from "../../../models";
 import FamilySim from "../FamilySim";
+import { Box, Flex, IconButton, Button, FormControl, FormLabel, Input, Divider, Text } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
 
 export const AddUser = ({ setView, user, setRoom, room }) => {
 	const [name, setName] = React.useState("");
@@ -26,21 +28,29 @@ export const AddUser = ({ setView, user, setRoom, room }) => {
 		setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
 	}
 	return (
-		<div>
-			<div>New user</div>
-			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-					submit();
-					setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
-				}}
-			>
-				<label>
-					Enter the user's name:
-					<input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-				</label>
-				<input type="submit" />
-			</form>
-		</div>
+		<Box background="gray.800" borderRadius={10} h="100%">
+			<IconButton position="relative" left="40vw" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
+
+			<Flex h={"60vh"} p={2} flexDirection={"column"} width="100%" alignItems="start">
+				<Text fontWeight="bold">Settings</Text>
+				<Flex justifyContent={"space-between"} align="center" width="100%" p={2}>
+					<Text>Add user</Text>
+				</Flex>
+				<Divider />
+				<FormControl
+					onSubmit={(e) => {
+						// e.preventDefault();
+						submit();
+						setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
+					}}
+				>
+					<FormLabel>
+						Enter the user's name:
+						<Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+					</FormLabel>
+					<Button type="submit">Add User</Button>
+				</FormControl>
+			</Flex>
+		</Box>
 	);
 };

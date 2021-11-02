@@ -58,7 +58,15 @@ export const Notification = ({ setView, setRoom }) => {
 									setShow("0");
 									setView(
 										<div>
-											<VideoChat name={e.name} room={e.room} setRoom={setRoom} setView={setView} />
+											<VideoChat
+												name={e.name}
+												room={e.room}
+												setRoom={setRoom}
+												setView={setView}
+												user={{
+													name: "Notification"
+												}}
+											/>
 										</div>
 									);
 								}}

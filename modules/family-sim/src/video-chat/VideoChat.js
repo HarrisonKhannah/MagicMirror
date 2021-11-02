@@ -4,7 +4,7 @@ import { EndedScreen } from "./Ended";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
-const VideoChat = ({ room, name, setView, setRoom }) => {
+const VideoChat = ({ room, name, setView, setRoom, user }) => {
 	const [username, setUsername] = React.useState(name);
 	const [roomName, setRoomName] = React.useState(room);
 	const [token, setToken] = React.useState(null);
@@ -34,7 +34,7 @@ const VideoChat = ({ room, name, setView, setRoom }) => {
 		handleSubmit();
 	}, []);
 	const handleLogout = React.useCallback((event) => {
-		setView(<EndedScreen room={room} setView={setView} setRoom={setRoom} />);
+		setView(<EndedScreen room={room} setView={setView} setRoom={setRoom} user={user} />);
 		setToken(null);
 	}, []);
 	let render;

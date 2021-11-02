@@ -116,7 +116,7 @@ const Cal = ({ setView, user, setRoom, room }) => {
 					eventClick={(e) => {
 						setView(
 							<div>
-								<VideoChat name={e.event.title} room={e.event.id} setRoom={setRoom} setView={setView} />
+								<VideoChat name={e.event.title} room={e.event.id} setRoom={setRoom} setView={setView} user={user} />
 							</div>
 						);
 					}}

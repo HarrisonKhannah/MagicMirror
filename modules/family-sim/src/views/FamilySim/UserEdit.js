@@ -19,6 +19,14 @@ export const UserEdit = ({ setView, user, setRoom, room, userEdit }) => {
 		getUsers();
 	}, []);
 
+	let link = "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json";
+
+	if (userEdit.happiness > 40 && userEdit.happiness < 90) {
+		link = "https://assets1.lottiefiles.com/packages/lf20_fbppr6l4/json copy/okay_boy.json";
+	} else if (userEdit.happiness <= 40) {
+		link = "https://assets9.lottiefiles.com/packages/lf20_bnf07c5p/json/sad_boy.json";
+	}
+
 	return (
 		<Box background="gray.800" borderRadius={10} h="100%">
 			<IconButton position="relative" left="40vw" colorScheme="red" size="sm" aria-label="Search database" icon={<CloseIcon />} onClick={() => setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />)} />
@@ -30,7 +38,7 @@ export const UserEdit = ({ setView, user, setRoom, room, userEdit }) => {
 						<Text>Name: {userEdit.name}</Text>
 					</Flex>
 					<Flex justifyContent={"start"} align="center" width="100%" p={2}>
-						<Text>Avatar: </Text> <Lottie options={{ loop: true, path: "https://assets9.lottiefiles.com/packages/lf20_lgxl1acg.json" }} style={{ margin: 0 }} height={100} width={100} />
+						<Text>Avatar: </Text> <Lottie options={{ loop: true, path: link }} style={{ margin: 0 }} height={100} width={100} />
 					</Flex>
 					<Box textAlign="left">
 						{" "}
