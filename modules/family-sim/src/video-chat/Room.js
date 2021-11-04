@@ -49,7 +49,7 @@ const Room = ({ roomName, token, handleLogout }) => {
 			});
 		};
 	}, [roomName, token]);
-
+	const [muted, setMuted] = React.useState(false);
 	return (
 		<div className="room">
 			<div className="remote-participants">{remoteParticipants.length == 0 ? <Waiting /> : remoteParticipants}</div>
@@ -61,7 +61,15 @@ const Room = ({ roomName, token, handleLogout }) => {
 						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">
 							<Image src={img1} h="100%" />
 						</Circle>
-						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">
+						<Circle
+							onClick={() => {
+								setMuted(!muted);
+							}}
+							backgroundColor={muted ? "red" : "gray.900"}
+							h="6vh"
+							p={3.5}
+							borderRadius="40"
+						>
 							<Image src={img2} h="100%" />
 						</Circle>
 						<Circle backgroundColor="gray.900" h="6vh" p={3.5} borderRadius="40">

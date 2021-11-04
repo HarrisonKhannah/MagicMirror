@@ -6,7 +6,7 @@ import { Message, User } from "../../models";
 import Cal from "./interaction_screens/Cal";
 import img from "../../assets/Vector.png";
 import MessageComp from "./interaction_screens/Message";
-import { Avatar, Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Avatar, Box, CircularProgress, CircularProgressLabel, Flex, Image, Text } from "@chakra-ui/react";
 import phone from "../../assets/Group_42.png";
 import cal from "../../assets/Group_43.png";
 import msg from "../../assets/Group_44.png";
@@ -151,26 +151,35 @@ export const MirrorComp = ({ setView, user, setRoom, room, msg }) => {
 
 const FamilySim = ({ setView, setRoom, room }) => {
 	const [users, setUsers] = React.useState([]);
+	const [load, setLoading] = React.useState(false);
 	async function getUsers() {
+		setLoading(true);
 		Amplify.configure(awsconfig);
 		const user = await DataStore.query(User);
-
+		setLoading(false);
 		setUsers(user);
 	}
 	React.useEffect(() => {
+		DataStore.clear();
 		getUsers();
 	}, []);
 	return (
 		<Flex alignItems="center" justifyContent="space-between">
-			<div className="lotties" style={{ display: "flex" }}>
-				{users.map((user) => {
-					return (
-						<div>
-							<UserComp setView={setView} user={user} setRoom={setRoom} room={room} />
-						</div>
-					);
-				})}
-			</div>
+			{load ? (
+				<CircularProgress isIndeterminate color="white">
+					<CircularProgressLabel>Loading</CircularProgressLabel>
+				</CircularProgress>
+			) : (
+				<div className="lotties" style={{ display: "flex" }}>
+					{users.map((user) => {
+						return (
+							<div>
+								<UserComp setView={setView} user={user} setRoom={setRoom} room={room} />
+							</div>
+						);
+					})}
+				</div>
+			)}
 			<div>
 				<MirrorComp setView={setView} user={"MIRROR"} setRoom={setRoom} room={room} />
 			</div>

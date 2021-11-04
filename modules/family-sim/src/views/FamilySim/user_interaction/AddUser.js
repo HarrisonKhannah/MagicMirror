@@ -37,18 +37,21 @@ export const AddUser = ({ setView, user, setRoom, room }) => {
 					<Text>Add user</Text>
 				</Flex>
 				<Divider />
-				<FormControl
-					onSubmit={(e) => {
-						// e.preventDefault();
-						submit();
-						setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
-					}}
-				>
+				<FormControl>
 					<FormLabel>
 						Enter the user's name:
 						<Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 					</FormLabel>
-					<Button type="submit">Add User</Button>
+					<Button
+						type="submit"
+						onClick={async (e) => {
+							e.preventDefault();
+							await submit();
+							setView(<FamilySim setView={setView} setRoom={setRoom} room={room} />);
+						}}
+					>
+						Add User
+					</Button>
 				</FormControl>
 			</Flex>
 		</Box>
