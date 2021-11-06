@@ -89,7 +89,7 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 						p={5}
 						justifyContent={"center"}
 					>
-						<Image src={mic} h={5} />
+						<Image src={mic} h={6} w={6} />
 					</Flex>
 					Start recording
 				</Box>
@@ -128,7 +128,7 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 							p={5}
 							justifyContent={"center"}
 						>
-							<Image src={mic} h={5} />
+							<Image src={mic} h={6} w={6} />
 						</Flex>
 						Redo recording
 					</Box>
@@ -145,7 +145,7 @@ const MessageAudio = ({ setView, user, setRoom, room }) => {
 							p={5}
 							justifyContent={"center"}
 						>
-							<Image src={send} h={5} />
+							<Image src={send} h={6} w={6} />
 						</Flex>
 						Upload file
 					</Box>

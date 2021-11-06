@@ -105,12 +105,12 @@ const MirrorSettings = ({ setView, user, setRoom, room, setShow }) => {
 const UserComp = ({ setView, user, setRoom, room }) => {
 	const [show, setShow] = React.useState(false);
 
-	let link = "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json";
+	let link = "https://assets10.lottiefiles.com/packages/lf20_faelzb1q/json 2 copy 4/happy_grandma.json";
 
-	if (user.happiness > 40 && user.happiness < 90) {
-		link = "https://assets1.lottiefiles.com/packages/lf20_fbppr6l4/json copy/okay_boy.json";
-	} else if (user.happiness <= 40) {
-		link = "https://assets9.lottiefiles.com/packages/lf20_bnf07c5p/json/sad_boy.json";
+	if ((user.happiness > 40 && user.happiness < 90) || user.name == "Phil") {
+		link = "https://assets5.lottiefiles.com/packages/lf20_lamh4vvr/json 2 copy 2/okay_grandma.json";
+	} else if (user.happiness <= 40 || user.name == "Lily") {
+		link = "https://assets7.lottiefiles.com/packages/lf20_u1swxo6c/json 2/sad_grandma.json";
 	}
 
 	return (
@@ -151,35 +151,25 @@ export const MirrorComp = ({ setView, user, setRoom, room, msg }) => {
 
 const FamilySim = ({ setView, setRoom, room }) => {
 	const [users, setUsers] = React.useState([]);
-	const [load, setLoading] = React.useState(false);
 	async function getUsers() {
-		setLoading(true);
 		Amplify.configure(awsconfig);
 		const user = await DataStore.query(User);
-		setLoading(false);
 		setUsers(user);
 	}
 	React.useEffect(() => {
-		DataStore.clear();
 		getUsers();
 	}, []);
 	return (
 		<Flex alignItems="center" justifyContent="space-between">
-			{load ? (
-				<CircularProgress isIndeterminate color="white">
-					<CircularProgressLabel>Loading</CircularProgressLabel>
-				</CircularProgress>
-			) : (
-				<div className="lotties" style={{ display: "flex" }}>
-					{users.map((user) => {
-						return (
-							<div>
-								<UserComp setView={setView} user={user} setRoom={setRoom} room={room} />
-							</div>
-						);
-					})}
-				</div>
-			)}
+			<div className="lotties" style={{ display: "flex" }}>
+				{users.map((user) => {
+					return (
+						<div>
+							<UserComp setView={setView} user={user} setRoom={setRoom} room={room} />
+						</div>
+					);
+				})}
+			</div>
 			<div>
 				<MirrorComp setView={setView} user={"MIRROR"} setRoom={setRoom} room={room} />
 			</div>

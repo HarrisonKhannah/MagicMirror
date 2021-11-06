@@ -1,14 +1,11 @@
 import { hot } from "react-hot-loader/root";
 import React from "react";
 import "./App.css";
-import FamilySim, { MirrorComp } from "./views/FamilySim/FamilySim";
+import FamilySim from "./views/FamilySim/FamilySim";
 import { Notification } from "./views/FamilySim/Notification";
-import VideoChat from "./video-chat/VideoChat";
-import Lobby from "./video-chat/Lobby";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import theme from "./theme";
-import { EndedScreen } from "./video-chat/Ended";
 const App = () => {
   const [view, setView] = React.useState();
   const [room, setRoom] = React.useState(null);
