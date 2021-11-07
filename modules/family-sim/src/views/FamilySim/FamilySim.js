@@ -69,8 +69,8 @@ const MirrorSettings = ({ setView, user, setRoom, room, setShow }) => {
 					setView(<Cal setView={setView} user={user} setRoom={setRoom} room={room} />);
 				}}
 			>
-				<Avatar background={"transparent"} name="Calander" src={cal} />
-				<Box>Calander</Box>
+				<Avatar background={"transparent"} name="Calendar" src={cal} />
+				<Box>Calendar</Box>
 			</Box>
 
 			<Box
