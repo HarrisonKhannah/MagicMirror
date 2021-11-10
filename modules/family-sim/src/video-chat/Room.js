@@ -17,6 +17,7 @@ const Waiting = () => {
 };
 
 const Room = ({ roomName, token, handleLogout }) => {
+	// Thanks to the https://www.twilio.com/blog/video-chat-react-hooks tutorial on generating a Video-call service using Twillo. Code from this tutorial has been used and modify to fit our specific purpose.
 	const [room, setRoom] = React.useState(null);
 	const [showChat, setShowChat] = React.useState(false);
 	const [participants, setParticipants] = React.useState([]);

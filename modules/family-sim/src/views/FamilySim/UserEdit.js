@@ -18,13 +18,12 @@ export const UserEdit = ({ setView, user, setRoom, room, userEdit }) => {
 	React.useEffect(() => {
 		getUsers();
 	}, []);
+	let link = "https://assets10.lottiefiles.com/packages/lf20_faelzb1q/json 2 copy 4/happy_grandma.json";
 
-	let link = "https://assets4.lottiefiles.com/packages/lf20_yl7cppcp/json copy 2/happy_boy.json";
-
-	if (userEdit.happiness > 40 && userEdit.happiness < 90) {
-		link = "https://assets1.lottiefiles.com/packages/lf20_fbppr6l4/json copy/okay_boy.json";
-	} else if (userEdit.happiness <= 40) {
-		link = "https://assets9.lottiefiles.com/packages/lf20_bnf07c5p/json/sad_boy.json";
+	if ((user.happiness > 40 && user.happiness < 90) || user.name == "Phil") {
+		link = "https://assets5.lottiefiles.com/packages/lf20_lamh4vvr/json 2 copy 2/okay_grandma.json";
+	} else if (user.happiness <= 40 || user.name == "Lily") {
+		link = "https://assets7.lottiefiles.com/packages/lf20_u1swxo6c/json 2/sad_grandma.json";
 	}
 
 	return (

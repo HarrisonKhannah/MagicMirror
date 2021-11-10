@@ -17,6 +17,7 @@ const App = () => {
     setRoom(v);
   };
   React.useEffect(() => {
+    // On load show FamilySim as the entry component
     test(<FamilySim setView={test} setRoom={setRoomTest} room={room} />);
   }, []);
 
@@ -31,7 +32,7 @@ const App = () => {
             bottom: "4%"
           }}
         ></div>
-
+        {/* Shown conditionally based on if there is an event on current date */}
         <Notification setView={setView} setRoom={setRoom} />
       </div>
     </ChakraProvider>

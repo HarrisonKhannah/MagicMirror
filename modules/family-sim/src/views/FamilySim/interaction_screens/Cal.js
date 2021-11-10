@@ -12,6 +12,7 @@ import { CloseIcon } from "@chakra-ui/icons";
 import FamilySim from "../FamilySim";
 
 function formatDate(date) {
+	// https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date formatting tutorial
 	var d = new Date(date),
 		month = "" + (d.getMonth() + 1),
 		day = "" + d.getDate(),

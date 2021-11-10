@@ -52,6 +52,7 @@ export const RateYourCall = ({ setView, setRoom, room, user }) => {
 					p={3}
 					h="90%"
 				>
+					{/* Modify users happiness index subsequently with the emotion chosen. */}
 					<Box h="100%" p={3.5} borderRadius="40" onClick={() => handleSubmit(-30)}>
 						<Image src={img1} h="100%" />
 					</Box>

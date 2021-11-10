@@ -4,6 +4,7 @@ import { Box, Flex, Image, Text, IconButton, Divider } from "@chakra-ui/react";
 import msgClosed from "../../../assets/email_1.png";
 import msgOpen from "../../../assets/envelope_1.png";
 import { CloseIcon } from "@chakra-ui/icons";
+// Hardcoding messages to show functionality without partner application.
 let msgs = `[
 	{ "id": "1f0098b6-4f43-484a-bffd-7532bc40754c", "from": "Harold", "read": false, "msg": "Hello", "userID": null, "_version": 1, "_lastChangedAt": 1634115183802, "_deleted": null },
 	{ "id": "32f251f4-7079-4ed8-b196-617e6b1d123e", "from": "Harold", "read": false, "msg": "aaaa", "userID": "9fb5183d-8455-4aad-a3f5-f8d7dd25356e", "_version": 1, "_lastChangedAt": 1634115296158, "_deleted": null },

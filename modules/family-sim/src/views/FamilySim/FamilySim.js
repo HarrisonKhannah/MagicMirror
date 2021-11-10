@@ -51,6 +51,7 @@ const UserMenu = ({ setView, user, setRoom, room }) => {
 					<Box>Message</Box>
 				</Box>
 				<Box p={5}>
+					{/* TODO: Implement in next iteration */}
 					<Avatar background={"transparent"} name="Games" src={games} />
 					<Box>Games</Box>
 				</Box>
@@ -104,7 +105,7 @@ const MirrorSettings = ({ setView, user, setRoom, room, setShow }) => {
 };
 const UserComp = ({ setView, user, setRoom, room }) => {
 	const [show, setShow] = React.useState(false);
-
+	// Logic to pull correct json
 	let link = "https://assets10.lottiefiles.com/packages/lf20_faelzb1q/json 2 copy 4/happy_grandma.json";
 
 	if ((user.happiness > 40 && user.happiness < 90) || user.name == "Phil") {
@@ -157,6 +158,7 @@ const FamilySim = ({ setView, setRoom, room }) => {
 		setUsers(user);
 	}
 	React.useEffect(() => {
+		// Get users from backend on load
 		getUsers();
 	}, []);
 	return (
