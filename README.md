@@ -19,4 +19,8 @@ To start the system:
 4. `yarn` at `modules/family-sim` level
 5. `yarn start` at `modules/family-sim` level
 
+In the event you want to run the VideoCall system locally on your network, please update the node server in `modules/family-sim/server/index` to listen to your IP, update `modules/family-sim/src/video-chat/VideoChat.js` to point to your local IP address, and finally `modules/family-sim/webpacl.config.js` and add the line under the `devServer` object: `host: "[local-ip]"`
+
+PS: To find your network IP address, use `ifconfig` in your terminal and take the `inet` address!
+
 </p>
